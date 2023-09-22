@@ -2,11 +2,13 @@ stages:
   -  build
   -  test
 
+image: gradle:alpine
+
 build:
   stage: build
-  image: openjdk:12-alpine
-  script:
-    - ./gradlew build
+  script: gradle --build-cache assemble
   artifacts:
     paths:
+      - build
+      - .gradle
       - ./build/libs
