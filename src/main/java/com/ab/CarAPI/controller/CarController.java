@@ -26,6 +26,13 @@ public class CarController {
         return carRepository.getReferenceById(id);
     }
 
+    @PostMapping
+    public Car newCar(@RequestBody Car car){
+
+        return carRepository.save(car);
+
+    }
+
     @DeleteMapping("/{id}")
     public void removeByID(@PathVariable("id") Long id){
         carRepository.deleteById(id);
